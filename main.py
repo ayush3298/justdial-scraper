@@ -45,7 +45,7 @@ class scraper:
 
 
     def extract_business_details(self,data):
-        bsns = business(data,self.city)
+        bsns = business(data,self.city,self.query)
 
 
 
@@ -82,7 +82,7 @@ class scraper:
 if __name__ == '__main__':
     # city = input('Please enter your city. :')
     # query = input('please enter your query : ')
-    c = scraper('chennai','bike service')
+    c = scraper('neemuch','saree store')
     c.extract_all_pages_url()
     c.get_list_of_business()
 

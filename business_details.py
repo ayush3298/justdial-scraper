@@ -3,9 +3,10 @@ from bs4 import BeautifulSoup
 from database import create_database,add_data_to_database,add_address
 
 class business:
-    def __init__(self,data,city):
+    def __init__(self,data,city,query):
         self.business_data = data
         self.city = city
+        self.query = query.replace(' ','_')
 
         self.soup = BeautifulSoup(self.business_data.text, 'lxml')
         self.address = self.get_business_adrs()
@@ -16,9 +17,9 @@ class business:
         self.phone_number = ''
         self.web_url = data.url
         self.total_votes = self.get_vote()
-        # self.service_aminities()
+        self.table_name = city+'_'+self.query
 
-        create_database(self.city)
+        create_database(self)
         add_data_to_database(self)
 
 
